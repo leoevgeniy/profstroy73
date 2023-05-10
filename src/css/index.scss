@@ -1,17 +1,88 @@
 @import "normalize.css";
 @import "fonts.scss";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 $back: #34203f;
 $text: #c72020;
 
-body {
-    background-color: $back;
-    color: $text;
-    font-family: 'Montserrat';
+
+.header {
+    font-family: 'Akrobat', ui-sans-serif;
+    &__line {
+        width: 100%;
+        height: 40px;
+        margin-top: 30px;
+        background-color: #60B487;
+    }
 }
 
-.image {
-    width: 300px;
-    height: 500px;
+main {
+    width: 100%;
+    //max-height: 1239px;
     background-size: cover;
-    background-image: url("../images/main.jpg");
+    background-image: url('../images/mainbg.jpg');
+    //background-position: center center;
+    .title {
+        margin-top: 30px;
+        right: 30px;
+        left: auto;
+        width: 790px;
+        .brigada-title {
+            float: right;
+            width: inherit;
+
+        }
+        .location-title {
+            float: right;
+            width: inherit;
+
+        }
+        .team-title {
+            width: inherit;
+        }
+        .no-avans {
+            margin-top: 30px;
+            font-size: 35px;
+            text-align: right;
+            margin-right: 40px;
+        }
+
+    }
+    button {
+        padding: 13px;
+        font-size: 35px;
+        background-color: #FCC338;
+    }
+    .sections {
+        padding-top: 550px;
+        margin-left: 25px;
+        p {
+            color: white;
+            font-size: 25px;
+            span {
+
+            }
+        }
+        .bani {
+            width: 180px;
+            margin: 15px 50px;
+        }
+
+        .info {
+            margin-left: 80px;
+            .pixel {
+                width: 5px;
+                height: 5px;
+                background-color: #fff;
+            }
+            span {
+                margin-left: 20px;
+                font-size: 20px;
+                color: white;
+            }
+        }
+
+    }
 }
+
+
+
