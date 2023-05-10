@@ -1,6 +1,6 @@
 import '../index.html';
 import '../css/index.scss';
+import './carousel';
+import './otzivarr';
 
-import {mult, sum} from "../modules/calc";
 
-import main from '../images/main.webp';
