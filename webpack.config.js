@@ -1,12 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
-
+const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 
 module.exports = {
@@ -25,6 +25,7 @@ module.exports = {
         filename: '[name].[contenthash].js',
         assetModuleFilename: 'assets/[hash][ext]'
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.html')
@@ -32,9 +33,22 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
         }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src/clients.json'),
+                    to: path.resolve(__dirname, 'dist/clients.json')
+                },
+            ],
+        }),
     ],
     module: {
         rules: [
+            {
+                test: /\.json$/,
+                use: 'json-loader',
+                type: 'javascript/auto'
+            },
             {
                 test: /\.html$/i,
                 loader: "html-loader",

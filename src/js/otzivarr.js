@@ -1,4 +1,5 @@
 import {otziv} from "./otziv";
+
 let oppened = false
 class otzivCard {
     constructor(name, descr, stars) {
@@ -17,19 +18,21 @@ class otzivCard {
         // } else {
         //     this.classes.forEach(className => element.classList.add(className));
         // }
-        element.classList.add('col-4')
+        element.classList.add('col-lg-4')
+        element.classList.add('col-md-6')
+        element.classList.add('col-12')
         element.classList.add('text-start')
         element.classList.add('my-3')
         let otzivstars = ''
         const star = '<div id="star"></div>'
 
-        for (let i = 1; i < this.stars; i++) {
+        for (let i = 1; i <= this.stars; i++) {
             otzivstars += star
         }
         element.innerHTML = `
-                    <h4 class="">${this.name}</h4>
+                    <h4 class="fs-lg-4, fs-5">${this.name}</h4>
                     <div class="stars d-flex">${otzivstars}</div>
-                    <div class="otziv">${this.descr}</div>
+                    <div class="fs-lg-6 fs-6 otziv">${this.descr}</div>
 
             `;
         this.parent.append(element);
@@ -38,12 +41,6 @@ class otzivCard {
 
 }
 
-// getResource('http://localhost:3000/menu')
-// .then(data => {
-//     data.forEach(({altimg, img, title, descr, price}) => {
-//         new menuCard(altimg, img, title, descr, price, '.menu .container').render();
-//     });
-// });
 otziv.map((item, i) => {
     if (i<6) {
         new otzivCard(item.name, item.otziv, item.stars).render()}
@@ -67,14 +64,6 @@ $(".arrow-4").click(function() {
 });
 
 
-// getResource('http://localhost:3000/menu')
-//     .then(data => createCard(data));
-// axios.get('http://localhost:3000/menu')
-//     .then(data => {
-//         data.data.forEach(({altimg, img, title, descr, price}) => {
-//             new menuCard(altimg, img, title, descr, price, '.menu .container').render();
-//         });
-//     });
 
 
 
