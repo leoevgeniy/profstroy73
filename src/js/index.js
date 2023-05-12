@@ -7,7 +7,6 @@ function fontsize() {
     let phone = document.querySelectorAll('.phone')
 
     phone.forEach(pho => {
-        console.log(pho.parentElement.offsetWidth)
         pho.style.fontSize = pho.parentElement.offsetWidth > 960 ? pho.parentElement.offsetWidth *0.025 :pho.parentElement.offsetWidth *0.03
         pho.style.paddingLeft = pho.parentElement.offsetWidth *0.01
         pho.style.paddingRight = pho.parentElement.offsetWidth *0.01

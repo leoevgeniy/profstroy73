@@ -25,7 +25,37 @@ module.exports = {
         filename: '[name].[contenthash].js',
         assetModuleFilename: 'assets/[hash][ext]'
     },
-
+    resolve: {
+        fallback: {
+            // "stream": require.resolve("stream-browserify"),
+            // "path": require.resolve("path-browserify"),
+            // "crypto": require.resolve("crypto-browserify"),
+            // "url": require.resolve("url/"),
+            // "http": require.resolve("stream-http"),
+            // "https": require.resolve("https-browserify"),
+            // "zlib": require.resolve("browserify-zlib"),
+            // "util": require.resolve("util/"),
+            // "os": require.resolve("os-browserify/browser"),
+            // "assert": require.resolve("assert/"),
+            // "buffer": require.resolve("buffer/"),
+            //
+            // "fs" :false,
+            // "net" : false,
+    //         "path" :false,
+    //         "os" :false,
+    //         "stream" :false,
+    //         "crypto" :false,
+    //         "url" :false,
+    //         "http" :false,
+    //         "https" :false,
+    //         "zlib" :false,
+    //         "util" :false,
+    //         "net" :false,
+    //         "dns" :false,
+    //         "child_process" :false,
+    //         "tls" :false,
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.html')
@@ -75,6 +105,9 @@ module.exports = {
             {
                 test: /\.(?:js|mjs|cjs)$/,
                 exclude: /node_modules/,
+                resolve: {
+                    fullySpecified: false, // disable the behavior
+                },
                 use: {
                     loader: 'babel-loader',
                     options: {
