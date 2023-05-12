@@ -7,7 +7,7 @@ const target = devMode ? 'web' : 'browserslist';
 const devtool = devMode ? 'source-map' : undefined;
 const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-
+const webpack = require('webpack')
 
 module.exports = {
     mode,
@@ -26,34 +26,37 @@ module.exports = {
         assetModuleFilename: 'assets/[hash][ext]'
     },
     resolve: {
+        alias: {
+            process: "process/browser"
+        },
         fallback: {
-            // "stream": require.resolve("stream-browserify"),
-            // "path": require.resolve("path-browserify"),
-            // "crypto": require.resolve("crypto-browserify"),
-            // "url": require.resolve("url/"),
-            // "http": require.resolve("stream-http"),
-            // "https": require.resolve("https-browserify"),
-            // "zlib": require.resolve("browserify-zlib"),
-            // "util": require.resolve("util/"),
-            // "os": require.resolve("os-browserify/browser"),
-            // "assert": require.resolve("assert/"),
-            // "buffer": require.resolve("buffer/"),
+            "stream": require.resolve("stream-browserify"),
+            "path": require.resolve("path-browserify"),
+            "crypto": require.resolve("crypto-browserify"),
+            "url": require.resolve("url/"),
+            "http": require.resolve("stream-http"),
+            "https": require.resolve("https-browserify"),
+            "zlib": require.resolve("browserify-zlib"),
+            "util": require.resolve("util/"),
+            "os": require.resolve("os-browserify/browser"),
+            "assert": require.resolve("assert/"),
+            "buffer": require.resolve("buffer/"),
             //
-            // "fs" :false,
-            // "net" : false,
-    //         "path" :false,
-    //         "os" :false,
-    //         "stream" :false,
-    //         "crypto" :false,
-    //         "url" :false,
-    //         "http" :false,
-    //         "https" :false,
-    //         "zlib" :false,
-    //         "util" :false,
-    //         "net" :false,
-    //         "dns" :false,
-    //         "child_process" :false,
-    //         "tls" :false,
+            "fs" :false,
+            "net" : false,
+            // "path" :false,
+            // "os" :false,
+            // "stream" :false,
+            // "crypto" :false,
+            // "url" :false,
+            // "http" :false,
+            // "https" :false,
+            // "zlib" :false,
+            // "util" :false,
+            "net" :false,
+            "dns" :false,
+            "child_process" :false,
+            "tls" :false,
         }
     },
     plugins: [
@@ -70,6 +73,9 @@ module.exports = {
                     to: path.resolve(__dirname, 'dist/clients.json')
                 },
             ],
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
         }),
     ],
     module: {
